@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Room from "./routes/Room";
+import Home from "./routes/Home";
+import Error from "./routes/Error";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<Error errorCode={404} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="test" element={<Room />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
