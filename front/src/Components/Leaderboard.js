@@ -1,7 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import BoardTab from "./BoardTab";
 import useFetch from "./useFetch";
 export const Wrapper = styled.div`
   margin: 2rem auto;
@@ -21,18 +19,11 @@ const Top = styled.div`
 `;
 export default function Leaderboard() {
   const { data, loading, error } = useFetch("/api/scores");
-  useEffect(() => {
-    if (Object.keys(data).length !== 0 && data.constructor === Object)
-      console.log(data);
-  }, [data]);
 
   return (
     <Wrapper>
-      <Top>Highest Scores</Top>
-
-      {[12, 22, 98, 1, 4].map((val, i) => {
-        return <BoardTab key={i} id={i} name={"david"} score={val} />;
-      })}
+      <Top>High Scores</Top>
+      {data}
     </Wrapper>
   );
 }

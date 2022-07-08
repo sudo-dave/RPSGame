@@ -23,7 +23,7 @@ scores_res_schema = {
 def get_scores():
     res = dict()
     db = Controller()
-    db_res = db.get_top_n_scores(2)
+    db_res = db.get_top_n_scores(5)
     for tup in db_res:
         res[tup[0]] = tup[1]
     return jsonify(res), 200

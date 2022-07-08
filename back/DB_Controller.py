@@ -15,6 +15,11 @@ CREATE TABLE Scores (
     Wins     INT       NOT NULL
 );"""
 
+DB_DUMMY_DATA_QUERY = """
+INSERT INTO Scores VALUES (NULL,"Dave",4), (NULL, "Jim",3), (NULL, "Johnny",23), (NULL, "Sudo",33), (NULL, "Joe",22)
+"""
+
+
 # add try exepct decarator
 
 
@@ -50,10 +55,9 @@ class Controller:
             print('Db exsits')
             return
         try:
-            query = """INSERT INTO Scores VALUES (NULL,"Dave",4), (NULL, "Jim",3)"""
             conn = sqlite3.connect(DB_FILENAME)
             conn.execute(DB_SCHEMA)
-            conn.execute(query)
+            conn.execute(DB_DUMMY_DATA_QUERY)
             conn.commit()
         except sqlite3.Error as er:
             print(er.message)

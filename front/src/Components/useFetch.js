@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import BoardTab from "./BoardTab";
 
 export default function useFetch(url) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ status: false, message: "" });
 
@@ -13,7 +14,16 @@ export default function useFetch(url) {
         const response = await fetch(url);
         if (!response.ok) throw new Error("Error fetching data.");
         const json = await response.json();
-        setData(json);
+        const components = [];
+
+        Object.entries(json).forEach((entry, i) => {
+          const idx = i + 1;
+          const [name, score] = entry;
+          components.push(
+            <BoardTab key={idx} id={idx} name={name} score={score} />
+          );
+        });
+        setData(components);
         setLoading(false);
       } catch (error) {
         setError({ status: true, message: error.message });
