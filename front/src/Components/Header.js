@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Wrapper } from "./utill.css";
 const Container = styled.header`
   background-color: #ff4949;
+  padding-block: 1rem;
 `;
-const Wrapper = styled.header`
-  text-align: center;
-  padding: 2rem;
-  p {
-    color: black;
-  }
-`;
+
 export default function Header() {
   return (
     <Container>
