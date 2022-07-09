@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import styled from "styled-components";
 import useFetch from "./useFetch";
 export const Wrapper = styled.div`
